@@ -37,27 +37,33 @@ Module ControlFlow
         Dim firstInput As Integer
         Dim secondInput As Integer
         Dim userInput As String = ""
-        Dim problem As Boolean = False
+        Dim problem As Boolean = True
 
-        Console.WriteLine("Enter a number")
+        While problem = True
+            Console.WriteLine("Enter the first number")
+            Try
+                userInput = Console.ReadLine()
+                firstInput = CInt(userInput)
+                problem = False
+            Catch ex As Exception
+                Console.WriteLine($"I need a number. You entered an invaid character {userInput}" & vbCrLf)
+                problem = True
+            End Try
+        End While
 
-        Try
-            userInput = Console.ReadLine()
-            firstInput = CInt(userInput)
-        Catch ex As Exception
-            Console.WriteLine($"I need a number. You entered an invaid character {userInput}" & vbCrLf)
-            problem = True
-        End Try
 
-        Console.WriteLine("Enter a number")
+        While problem = True
+            Console.WriteLine("Enter the second number")
+            Try
+                userInput = Console.ReadLine()
+                secondInput = CInt(userInput)
+                problem = False
+            Catch ex As Exception
+                Console.WriteLine($"I need a number. You entered an invaid character {userInput}" & vbCrLf)
+                problem = True
+            End Try
+        End While
 
-        Try
-            userInput = Console.ReadLine()
-            secondInput = CInt(userInput)
-        Catch ex As Exception
-            Console.WriteLine($"I need a number. You entered an invaid character {userInput}" & vbCrLf)
-            problem = True
-        End Try
 
         If problem = True Then
             Console.Clear()
@@ -65,7 +71,7 @@ Module ControlFlow
             Console.WriteLine("Have a nice day...")
         Else
             'Do the math if no problem
-            Console.WriteLine(firstInput + secondInput)
+            Console.WriteLine($"{firstInput} + {secondInput} = {firstInput + secondInput}")
         End If
 
         'Console.WriteLine(CInt(firstInput) + CInt(secondInput))
