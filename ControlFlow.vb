@@ -39,7 +39,10 @@ Module ControlFlow
         Dim userInput As String = ""
         Dim problem As Boolean = True
 
-        While problem = True
+
+        Console.WriteLine("Enter ""Q"" at any time to quit.")
+
+        While problem = True And userInput <> "Q" And userInput <> "q"
             Console.WriteLine("Enter the first number")
             Try
                 userInput = Console.ReadLine()
@@ -51,9 +54,10 @@ Module ControlFlow
             End Try
         End While
 
+        problem = True
 
-        While problem = True
-            Console.WriteLine("Enter the second number")
+        While problem = True And userInput <> "Q" And userInput <> "q"
+            Console.WriteLine(vbCrLf & "Enter the second number")
             Try
                 userInput = Console.ReadLine()
                 secondInput = CInt(userInput)
@@ -67,11 +71,11 @@ Module ControlFlow
 
         If problem = True Then
             Console.Clear()
-            Console.WriteLine("Sorry try again later...")
-            Console.WriteLine("Have a nice day...")
+            Console.WriteLine("You have quit the program.")
+            Console.WriteLine("Have a nice day.")
         Else
             'Do the math if no problem
-            Console.WriteLine($"{firstInput} + {secondInput} = {firstInput + secondInput}")
+            Console.WriteLine(vbCrLf & $"{firstInput} + {secondInput} = {firstInput + secondInput}")
         End If
 
         'Console.WriteLine(CInt(firstInput) + CInt(secondInput))
